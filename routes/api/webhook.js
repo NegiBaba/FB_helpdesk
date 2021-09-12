@@ -90,22 +90,7 @@ function callSendAPI(sender_psid, response) {
         },
         "message": response
     }
-
-    let PAGE_ACCESS_TOKEN = 'EAAMlZAmtoZAc8BALFk8JONeZClSpC4ASJY5gue1HoGd2x3VnSRZCFogweV2afKqKg8tIrmYpwrZAWCiR59lKHcFWrwYZBfZALTJTVGbyZAp4pkEzvgRB6PIRfzDNqOganJ4YcrK5AlqZAhQhsudXZChCVRtEJcfWuMLy0bxP8FxGA2nNyECOSPyNbY';
-
-    // Send the HTTP request to the Messenger Platform
-    request({
-        "uri": "https://graph.facebook.com/v2.6/me/messages",
-        "qs": { "access_token": PAGE_ACCESS_TOKEN },
-        "method": "POST",
-        "json": request_body
-    }, (err, res, body) => {
-        if (!err) {
-            console.log('message sent');
-        } else {
-            alert("Unable to send the message");
-        }
-    });
+    console.log('called the send api function');
 }
 
 module.exports = app;
