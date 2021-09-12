@@ -4,6 +4,8 @@ const
     bodyParser = require('body-parser'),
     app = express().use(bodyParser.json()); // creates express http server
 
+const mongoose = require('./mongo');
+
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {
     let body = req.body;
@@ -77,6 +79,10 @@ function handleMessage(sender_psid, reveived_message) {
             "text": 'Message recieved will reach to you soon.'
         }
     }
+
+    console.log("***************")
+    console.log('message recieved inserting to the db');
+    console.log(mongoose.connection);
 
     // Sending the response
     callSendAPI(sender_psid, response);
