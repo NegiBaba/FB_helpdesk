@@ -6,7 +6,6 @@ const bodyParser = require('body-parser')
 require('dotenv').config();
 require('./routes/api/mongo');
 
-console.log(process.env.MONGO_URI);
 // creates express http server
 const app = express();
 

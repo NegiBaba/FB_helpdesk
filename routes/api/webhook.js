@@ -82,13 +82,10 @@ function handleMessage(sender_psid, received_message) {
         }
     }
 
-    console.log("***************")
     console.log('message recieved inserting to the db');
 
     const chat = {
-        sender_id: sender_psid,
-        reciever_id: '123',
-        message: received_message,
+        message: received_message.text,
         id: 0
     }
 

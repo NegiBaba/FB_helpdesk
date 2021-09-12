@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
 
 const chat = new mongoose.Schema({
-    sender_id: String,
-    reciever_id: String,
     message: String,
-    time: Date.now,
+    createdAt: Date.now,
     id: Number,
-});
+},{timestamps:true});
 
 module.exports = mongoose.model('chat', chat);
