@@ -91,7 +91,7 @@ function handleMessage(sender_psid, received_message) {
         message: received_message,
         id: 0
     }
-    console.log(db.collection.inserOne({
+    console.log(db.collection.insertOne({
         name: "testing",
         id: 123
     }));
