@@ -6,6 +6,8 @@ const
 
 const mongoose = require('./mongo');
 const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Connection error:'));
+
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {
     let body = req.body;
@@ -89,8 +91,7 @@ function handleMessage(sender_psid, received_message) {
         message: received_message,
         id: 0
     }
-    console.log(db.collection(sender_psid));
-    db.collection(sender_psid).insertOne(chat)
+    console.log(db.collection(sender_psid).find());
 
     // Sending the response
     callSendAPI(sender_psid, response);
