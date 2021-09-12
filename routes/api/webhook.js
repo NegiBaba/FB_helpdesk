@@ -5,7 +5,7 @@ const
     app = express().use(bodyParser.json()); // creates express http server
 
 const mongoose = require('./mongo');
-
+const db = mongoose.connection;
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {
     let body = req.body;
@@ -71,10 +71,10 @@ app.get('/webhook', (req, res) => {
     }
 });
 
-function handleMessage(sender_psid, reveived_message) {
+function handleMessage(sender_psid, received_message) {
     let response;
 
-    if (reveived_message.text) {
+    if (received_message.text) {
         response = {
             "text": 'Message recieved will reach to you soon.'
         }
@@ -82,7 +82,15 @@ function handleMessage(sender_psid, reveived_message) {
 
     console.log("***************")
     console.log('message recieved inserting to the db');
-    console.log(mongoose.connection);
+
+    const chat = {
+        sender_id: sender_psid,
+        reciever_id: '123',
+        message: received_message,
+        id: 0
+    }
+    console.log(db.collection(sender_psid));
+    db.collection(sender_psid).insertOne(chat)
 
     // Sending the response
     callSendAPI(sender_psid, response);
