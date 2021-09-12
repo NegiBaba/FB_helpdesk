@@ -91,7 +91,12 @@ function handleMessage(sender_psid, received_message) {
         message: received_message,
         id: 0
     }
-    console.log(db.collection(sender_psid).find());
+    console.log(db.collection.inserOne({
+        name: "testing",
+        id: 123
+    }));
+
+    console.log(db.collection.find());
 
     // Sending the response
     callSendAPI(sender_psid, response);
