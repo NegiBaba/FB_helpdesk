@@ -8,6 +8,6 @@ mongoose.connect(process.env.MONGO_URI, {
     useUnifiedTopology: true
 })
 .then(() => console.log("connected to Mongodb"))
-.catch((err) => console.log("cannot connect to mongo server", err));
+.catch((err) => console.log("cannot connect to mongo server"));
 
 module.exports = mongoose;
