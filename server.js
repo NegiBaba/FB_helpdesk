@@ -3,6 +3,7 @@ const cors = require('cors');
 const request = require('request');
 const bodyParser = require('body-parser')
 
+require('dotenv').config();
 require('./routes/api/mongo');
 
 // creates express http server
