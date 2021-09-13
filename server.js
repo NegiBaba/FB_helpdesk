@@ -13,7 +13,9 @@ const app = express();
 app.use(cors());
 
 const webhook = require('./routes/api/webhook');
+const user = require('./routes/api/user');
 app.use(webhook);
+app.use(user);
 
 const PORT = process.env.PORT || 1337;
 
