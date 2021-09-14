@@ -11,7 +11,6 @@ db.on('error', console.error.bind(console, 'Connection error:'));
 app.get('/user', (req, res) => {
     const col = req.query.userId;
     console.log("user id id : ", col);
-    console.log(db.getCollection(col.toString()).find());
     res.send("response from backend");
 })
 
