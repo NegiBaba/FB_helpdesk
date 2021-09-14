@@ -5,11 +5,11 @@ const
     app = express().use(bodyParser.json()); // creates express http server
 
 const mongoose = require('./mongo');
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'Connection error:'));
-db.once('open', function () {
+const connection = mongoose.connection;
+connection.on('error', console.error.bind(console, 'Connection error:'));
+connection.once('open', function () {
 
-    db.db.collection("6086240188116419 ", function(err, collection){
+    connection.db.collection("6086240188116419 ", function(err, collection){
         collection.find({}).toArray(function(err, data){
             console.log(data); // it will print your collection data
         })
