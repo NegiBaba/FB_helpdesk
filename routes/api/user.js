@@ -13,7 +13,7 @@ app.get('/user', (req, res) => {
     console.log("user id id : ", col);
 
     const User = new mongoose.model(col, chat);
-    console.log(User.find({}));
+    User.find({id: 0});
     res.send("response from backend");
 })
 
