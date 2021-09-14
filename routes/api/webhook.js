@@ -4,6 +4,7 @@ const
     bodyParser = require('body-parser'),
     app = express().use(bodyParser.json()); // creates express http server
 
+const mongoose = require('mongoose');
 const db = require('./mongo');
 const chat = require('../../models/chat');
 
@@ -93,7 +94,7 @@ function handleMessage(sender_psid, received_message) {
             console.log('message inserted into collection');
         }
     })
-    
+
     console.log('response of database : ');
     //db.collection(sender_psid).insertOne(chat);
 
