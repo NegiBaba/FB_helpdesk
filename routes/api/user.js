@@ -12,7 +12,7 @@ app.get('/user', (req, res) => {
     const col = req.query.userId;
     console.log("user id id : ", col);
     console.log(db.collection(col).find());
-    res.send("res from backed");
+    res.sendFile(db.collection(col).find());
 })
 
 app.post('/user', async (req, res) => {
