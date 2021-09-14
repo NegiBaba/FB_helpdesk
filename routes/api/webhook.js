@@ -5,16 +5,10 @@ const
     app = express().use(bodyParser.json()); // creates express http server
 
 const mongoose = require('./mongo');
-const connection = mongoose.connection;
-connection.on('error', console.error.bind(console, 'Connection error:'));
-connection.once('open', function () {
-
-    connection.db.collection("6086240188116419 ", function(err, collection){
-        collection.find({}).toArray(function(err, data){
-            console.log(data); // it will print your collection data
-        })
-    });
-
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Connection error:'));
+mongoose.connection.on("open", function () {
+    console.log("mongodb is connected!!");
 });
 
 // Creates the endpoint for our webhook 
