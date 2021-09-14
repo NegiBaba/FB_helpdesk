@@ -1,26 +1,15 @@
 import { useEffect } from "react"
-import Navigation from "./Navigation/Navigation"
+import axios from "axios";
 
+import Navigation from "./Navigation/Navigation"
 // import "./Main.css"
 
 function getuser(userId, msg) {
-    return new Promise((resolve, reject) => {
-        const body = {
-            userId,
-            msg
-        }
-        fetch("https://helpdesk-testing.herokuapp.com/user",
-            {
-                method: "POST",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(body),
-            })
-            .then((resp) => resolve())
-            .catch((err) => console.log(err.message))
-    })
+    axios.get('https://helpdesk-testing.herokuapp.com/user?userId=' + userId).then(response => {
+        console.log(response);
+    }).catch(err => {
+        console.log(err);
+    });
 }
 export default function Main() {
     const userId = 533086657953118;

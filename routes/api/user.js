@@ -9,7 +9,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
 
 app.get('/user', (req, res) => {
-    console.log(req.body);
+    console.log(req);
     res.send("response");
 })
 
