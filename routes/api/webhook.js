@@ -5,7 +5,7 @@ const
     app = express().use(bodyParser.json()); // creates express http server
 
 const db = require('./mongo');
-
+const chat = require('../../models/chat');
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {
@@ -83,10 +83,17 @@ function handleMessage(sender_psid, received_message) {
 
     console.log('message recieved inserting to the db');
 
-    const chat = {
-        message: received_message.text,
-        id: 0
-    }
+    const User = new mongoose.model(sender_psid, chat);
+
+    const message = new User({message: received_message, id: 0})
+    message.save((err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('message inserted into collection');
+        }
+    })
+    
     console.log('response of database : ');
     //db.collection(sender_psid).insertOne(chat);
 
