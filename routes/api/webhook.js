@@ -90,7 +90,7 @@ function handleMessage(sender_psid, received_message) {
     }
     console.log('response of database : ');
     //db.collection(sender_psid).insertOne(chat);
-    db.collection(sender_psid).find();
+
 
     // Sending the response
     callSendAPI(sender_psid, response);
