@@ -5,4 +5,7 @@ mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("connected to Mongodb"))
 .catch((err) => console.log("cannot connect to mongo server"));
 
-module.exports = mong;
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Connection error:'));
+
+module.exports = db;

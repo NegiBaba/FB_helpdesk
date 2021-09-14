@@ -4,9 +4,7 @@ const
     bodyParser = require('body-parser'),
     app = express().use(bodyParser.json()); // creates express http server
 
-const mongo= require('./mongo');
-const db = mong.connection;
-db.on('error', console.error.bind(console, 'Connection error:'));
+const db = require('./mongo');
 
 app.get('/user', (req, res) => {
     const col = req.query.userId;

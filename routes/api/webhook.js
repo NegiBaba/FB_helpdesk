@@ -4,9 +4,8 @@ const
     bodyParser = require('body-parser'),
     app = express().use(bodyParser.json()); // creates express http server
 
-const mong = require('./mongo');
-const db = mong.connection;
-db.on('error', console.error.bind(console, 'Connection error:'));
+const db = require('./mongo');
+
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {
