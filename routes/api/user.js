@@ -11,7 +11,7 @@ db.on('error', console.error.bind(console, 'Connection error:'));
 app.get('/user', (req, res) => {
     const col = req.query.userId;
     console.log("user id id : ", col);
-    console.log(db.col);
+    console.log(typeof col);
     res.send("res from backed");
 })
 
