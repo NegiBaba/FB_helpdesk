@@ -88,7 +88,7 @@ function handleMessage(sender_psid, received_message) {
         message: received_message.text,
         id: 0
     }
-
+    console.log('response of database : ');
     //db.collection(sender_psid).insertOne(chat);
     db.collection(sender_psid).find();
 
