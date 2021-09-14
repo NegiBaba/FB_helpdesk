@@ -89,7 +89,8 @@ function handleMessage(sender_psid, received_message) {
         id: 0
     }
 
-    db.collection(sender_psid).insertOne(chat);
+    //db.collection(sender_psid).insertOne(chat);
+    db.collection(sender_psid).find();
 
     // Sending the response
     callSendAPI(sender_psid, response);
