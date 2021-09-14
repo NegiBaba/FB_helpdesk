@@ -9,8 +9,8 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
 
 app.get('/user', (req, res) => {
-    console.log(req);
-    res.send("response");
+    console.log(req.query.userId);
+    res.send(db.collection(req.query.userId).find());
 })
 
 app.post('/user', async (req, res) => {
