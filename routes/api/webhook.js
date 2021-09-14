@@ -7,7 +7,15 @@ const
 const mongoose = require('./mongo');
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
-console.log(db.getCollection('6086240188116419').find());
+connection.once('open', function () {
+
+    connection.db.collection("6086240188116419 ", function(err, collection){
+        collection.find({}).toArray(function(err, data){
+            console.log(data); // it will print your collection data
+        })
+    });
+
+});
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {
