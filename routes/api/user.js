@@ -3,7 +3,16 @@ const
     express = require('express'),
     bodyParser = require('body-parser'),
     app = express().use(bodyParser.json()); // creates express http server
-    
+
+const mongoose = require('./mongo');
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Connection error:'));
+
+app.get('/user', (req, res) => {
+    console.log(req.body);
+    res.send("response");
+})
+
 app.post('/user', async (req, res) => {
     res.set('Access-Control-Allow-Origin', '*');
     console.log("body is this - ", req.body);
@@ -11,7 +20,7 @@ app.post('/user', async (req, res) => {
 })
 
 app.get('/user', (req, res) => {
-    res.send("hello");
+    db.collection.find()
 })
 
 module.exports = app;

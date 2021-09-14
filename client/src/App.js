@@ -1,6 +1,6 @@
 import './App.css';
 
-import Main from "./components/Main/main";
+import Main from "./components/Main/Main";
 import Login from "./components/Login/login";
 
 function App(props) {
