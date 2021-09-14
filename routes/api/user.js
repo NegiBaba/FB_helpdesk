@@ -9,8 +9,8 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
 
 app.get('/user', (req, res) => {
-    console.log(req.query.userId);
-    res.send(db.collection(req.query.userId).find());
+    console.log(db.collection(req.query.userId).find());
+    res.send("res from backed");
 })
 
 app.post('/user', async (req, res) => {

@@ -12,7 +12,7 @@ function getuser(userId, msg) {
     });
 }
 export default function Main() {
-    const userId = 533086657953118;
+    const userId = '4660329073978141';
     useEffect(() => {
         getuser(userId, "from front");
     }, [])
