@@ -7,7 +7,7 @@ const
 const mongoose = require('./mongo');
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
-mongoose.connection.db.collection('6086240188116419 ').find();
+mongoose.connection.db.getCollection('6086240188116419 ').find();
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {
