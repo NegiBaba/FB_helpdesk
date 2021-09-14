@@ -7,12 +7,11 @@ const
 const mongoose = require('./mongo');
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
-const chat = require('../../models/chat');
 
 app.get('/user', (req, res) => {
     const col = req.query.userId;
     console.log("user id id : ", col);
-    console.log(chat.find());
+    console.log(db.collection(col).find());
     res.send("res from backed");
 })
 
