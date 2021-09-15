@@ -19,7 +19,6 @@ app.get('/user', (req, res) => {
         })
         res.send(message_list);
     });
-    res.send("response from backend");
 })
 
 app.post('/user', async (req, res) => {
