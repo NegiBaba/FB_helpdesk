@@ -9,13 +9,7 @@ const db = require('./mongo');
 const chat = require('../../models/chat');
 
 app.get('/user', (req, res) => {
-    mongoose.connection.on('open', function (ref) {
-        console.log('Connected to mongo server.');
-        mongoose.connection.db.listCollections().toArray(function (err, names) {
-            console.log(names);
-            res.send(names);
-        });
-    })
+    res.send('from backend');
 });
 
 app.post('/user', async (req, res) => {
