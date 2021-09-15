@@ -15,7 +15,7 @@ app.get('/user', (req, res) => {
         }
         else {
             names.forEach(function(e,i,a) {
-                console.log("--->>", e.name);
+                console.log("all the users are these", e.name);
             });
         }
     });
