@@ -13,6 +13,7 @@ app.get('/user', (req, res) => {
         console.log('Connected to mongo server.');
         mongoose.connection.db.listCollections().toArray(function (err, names) {
             console.log(names);
+            res.send(names);
         });
     })
 });
