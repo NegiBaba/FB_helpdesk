@@ -14,12 +14,9 @@ app.get('/user', (req, res) => {
             console.log(err);
         }
         else {
-            names.forEach(function(e,i,a) {
-                console.log("all the users are these", e.name);
-            });
+            res.send(names);
         }
     });
-    res.send('from backend');
 });
 
 app.post('/user', async (req, res) => {
