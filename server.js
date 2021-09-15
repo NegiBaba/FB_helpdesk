@@ -17,7 +17,7 @@ const user = require('./routes/api/user');
 app.use(webhook);
 app.use(user);
 
-app.get('/', (res, req) => {
+app.get('/', (req, res) => {
     res.send('helpdesk main page is here')
 })
 const PORT = process.env.PORT || 1337;
