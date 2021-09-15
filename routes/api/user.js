@@ -14,9 +14,9 @@ app.get('/user', (req, res) => {
         //trying to get collection names
         db.db.listCollections().toArray(function (err, names) {
             console.log(names); // [{ name: 'dbname.myCollection' }]
+            res.send(names);
         });
     })
-    res.send('from backend');
 });
 
 app.post('/user', async (req, res) => {
