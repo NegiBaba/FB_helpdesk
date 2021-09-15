@@ -9,10 +9,10 @@ const db = require('./mongo');
 const chat = require('../../models/chat');
 
 app.get('/user', (req, res) => {
-    mongoose.connection.on('open', function (ref) {
+    db.on('open', function (ref) {
         console.log('Connected to mongo server.');
         //trying to get collection names
-        mongoose.connection.db.listCollections().toArray(function (err, names) {
+        db.db.listCollections().toArray(function (err, names) {
             console.log(names); // [{ name: 'dbname.myCollection' }]
         });
     })
