@@ -9,8 +9,12 @@ const db = require('./mongo');
 const chat = require('../../models/chat');
 
 app.get('/user', (req, res) => {
-    const collections = Object.keys(mongoose.connection.collections);
-    res.send(collections);
+    mongoose.connection.on('open', function (ref) {
+        console.log('Connected to mongo server.');
+        mongoose.connection.db.listCollections().toArray(function (err, names) {
+            console.log(names);
+        });
+    })
 });
 
 app.post('/user', async (req, res) => {

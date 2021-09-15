@@ -5,7 +5,7 @@ import Navigation from "./Navigation/Navigation"
 // import "./Main.css"
 
 const userList = [];
-function getuser(userId, msg) {
+function getuser() {
     axios.get('https://helpdesk-testing.herokuapp.com/user').then(response => {
         console.log(response);
     }).catch(err => {
@@ -14,7 +14,7 @@ function getuser(userId, msg) {
 }
 export default function Main() {
     useEffect(() => {
-        getuser(userId, "from front");
+        getuser();
     }, [])
     return (
         <main>
