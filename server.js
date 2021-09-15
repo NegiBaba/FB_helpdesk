@@ -18,7 +18,7 @@ app.use(webhook);
 app.use(user);
 
 app.get('/', (res, req) => {
-    res.send(<h1>helpdesk main page is here</h1>)
+    res.send(helpdesk main page is here)
 })
 const PORT = process.env.PORT || 1337;
 
