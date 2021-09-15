@@ -16,5 +16,11 @@
     padding: 0;
 }
 .nav-item {
-    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.nav-item:hover {
+    background-color: #0a4fa9;
+    cursor: pointer;
 }

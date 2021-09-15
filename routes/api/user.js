@@ -9,17 +9,9 @@ const db = require('./mongo');
 const chat = require('../../models/chat');
 
 app.get('/user', (req, res) => {
-    const col = req.query.userId;
-    console.log("user id id : ", col);
-
-    const User = new mongoose.model(col, chat);
-    User.find({}, (err, message_list) => {
-        message_list.forEach((item) => {
-            console.log(item.message);
-        })
-        res.send(message_list);
-    });
-})
+    const collections = Object.keys(mongoose.connection.collections);
+    res.send(collections);
+});
 
 app.post('/user', async (req, res) => {
     res.set('Access-Control-Allow-Origin', '*');
