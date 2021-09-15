@@ -17,6 +17,9 @@ const user = require('./routes/api/user');
 app.use(webhook);
 app.use(user);
 
+app.get('/', (res, req) => {
+    res.sendStatus(200);
+})
 const PORT = process.env.PORT || 1337;
 
 app.listen(PORT, () => console.log("server is running on PORT: ", { PORT }));
