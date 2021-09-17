@@ -4,6 +4,13 @@ import axios from "axios";
 import icon from "./UserIcon.svg"
 import './UserList.css'
 
+
+async function getUserMessages(userId) {
+    await axios.get('https://helpdesk-testing.herokuapp.com/messages?userId=' + userId)
+    .then(response => {
+        console.log(response.data);
+    })
+}
 export default function UserList() {
 
     //this list will contain all the user who have sent message to the current user's page
@@ -24,6 +31,6 @@ export default function UserList() {
 
     return <div className='UserList'>
         <h1 className='UserListHeading'>Conversation</h1>
-        {userList.map((user) => <div className='userBox' onClick = {((event) => {console.log(event.target.innerText)})}><img src={icon} alt='userIcon' /><h3 className='userName'>{ user.name }</h3></div>)}
+        {userList.map((user) => <div className='userBox' onClick = {((event) => {getUserMessages(event.target.innerText)})}><img src={icon} alt='userIcon' /><h3 className='userName'>{ user.name }</h3></div>)}
     </div>
 }
