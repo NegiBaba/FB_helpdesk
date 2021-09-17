@@ -19,14 +19,12 @@ app.get('/user', (req, res) => {
     });
 });
 
-app.post('/user', async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
-    console.log("body is this - ", req.body);
-    res.sendStatus(200);
-})
+app.get('/messages', (req, res) => {
+    const userId = req.body.userId;
+    const User = new mongoose.model(userId, chat);
 
-app.get('/user', (req, res) => {
-    db.collection.find()
+    console.log(User.find({}));
+    res.send('message from the backend');
 })
 
 module.exports = app;
