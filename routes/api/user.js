@@ -24,7 +24,7 @@ app.get('/messages', (req, res) => {
     // const User = new mongoose.model(userId, chat);
 
     // console.log(User.find({}));
-    console.log(userId);
+    console.log(req.body);
     res.send('message from the backend');
 })
 
