@@ -26,7 +26,7 @@ export default function UserList() {
             });
         }
         // getUserList();
-        setUserList([{name: 4660329073978141}, {name: 6086240188116419}])
+        setUserList([{name: '4660329073978141'}, {name: '6086240188116419'}])
     },[])
 
     return <div className='UserList'>
