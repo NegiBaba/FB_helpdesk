@@ -15,6 +15,7 @@ export default function UserList() {
 
     //this list will contain all the user who have sent message to the current user's page
     const [userList, setUserList] = useState([]);
+
     useEffect(() => {
         async function getUserList() {
             await axios.get('https://helpdesk-testing.herokuapp.com/user').then(response => {
@@ -31,6 +32,7 @@ export default function UserList() {
 
     return <div className='UserList'>
         <h1 className='UserListHeading'>Conversation</h1>
-        {userList.map((user) => <div className='userBox' onClick = {((event) => {getUserMessages(event.target.innerText)})}><img src={icon} alt='userIcon' /><h3 className='userName'>{ user.name }</h3></div>)}
+        {userList.map((user) => <div className='userBox' onClick = {((event) => {getUserMessages(event.target.innerText)})}><img src={icon} alt='userIcon' className='usericon'/><h3 className='userName'>{ user.name }</h3></div>)}
+        
     </div>
 }
