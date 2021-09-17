@@ -22,8 +22,9 @@ app.get('/user', (req, res) => {
 app.get('/messages', (req, res) => {
     const userId = req.query.userId;
     const User = new mongoose.model(userId, chat);
-    const messages = User.find({});
-    console.log(messages);
+    User.find({}, (error, message) => {
+        console.log(message);
+    })
     res.send('message from the backend');
 })
 
