@@ -22,7 +22,7 @@ app.get('/user', (req, res) => {
 app.get('/messages', (req, res) => {
     const userId = req.query.userId;
     const User = new mongoose.model(userId, chat);
-    const messages = await User.find({});
+    const messages = User.find({});
     console.log(messages);
     res.send('message from the backend');
 })
