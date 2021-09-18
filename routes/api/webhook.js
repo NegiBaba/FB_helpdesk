@@ -7,6 +7,7 @@ const
 const mongoose = require('mongoose');
 const { Server, Socket } = require('socket.io');
 const {createServer } = require('http');
+const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {

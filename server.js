@@ -9,6 +9,7 @@ require('./routes/api/mongo');
 // creates express http server
 const app = express();
 
+
 // uses cors for api calls
 app.use(cors());
 
