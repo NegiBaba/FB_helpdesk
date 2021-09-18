@@ -13,6 +13,6 @@ export default function Message(userId) {
         getUserMessages(userId.props)
     },[userId])
     return <div>
-        <h4>messages fiv</h4>
+        <h4>messages div</h4>
     </div>
 }

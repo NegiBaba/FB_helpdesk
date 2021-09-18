@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 })
 
 io.on('connection', (socket) => {
-    console.log('user connected')
+    socket.emit('check', 'print this');
 })
 
 const PORT = process.env.PORT || 1337;

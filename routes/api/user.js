@@ -7,9 +7,6 @@ const
 const mongoose = require('mongoose');
 const db = require('./mongo');
 const chat = require('../../models/chat');
-const io = require('socket.io-client');
-
-const socket = io("https://helpdesk-testing.herokuapp.com");
 
 app.get('/user', (req, res) => {
     mongoose.connection.db.listCollections().toArray(function(err, names) {

@@ -5,6 +5,10 @@ import icon from "./UserIcon.svg"
 import './UserList.css'
 import Message from './Message/Message';
 
+import { io } from 'socket.io-client';
+
+const socket = io('https://helpdesk-testing.herokuapp.com/');
+
 export default function UserList() {
 
     //this list will contain all the user who have sent message to the current user's page
@@ -24,6 +28,10 @@ export default function UserList() {
             });
         }
         getUserList();
+
+        io.on('connection', (data) => {
+            console.log(data);
+        })
 
         //setUserList([{name: '4660329073978141'}, {name: '6086240188116419'}])
     },[])
