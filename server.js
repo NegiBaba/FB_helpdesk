@@ -4,12 +4,6 @@ const request = require('request');
 const bodyParser = require('body-parser')
 const { Server, Socket } = require('socket.io');
 const {createServer } = require('http');
-const httpServer = createServer(app);
-const io = new Server(httpServer, {
-    cors: {
-        origin: '*',
-    }
-});
 
 require('dotenv').config();
 require('./routes/api/mongo');
@@ -17,6 +11,12 @@ require('./routes/api/mongo');
 // creates express http server
 const app = express();
 
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+    cors: {
+        origin: '*',
+    }
+});
 
 // uses cors for api calls
 app.use(cors());
