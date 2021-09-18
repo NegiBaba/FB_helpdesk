@@ -11,7 +11,11 @@ const { Server, Socket } = require('socket.io');
 // creates express http server
 const app = express();
 const httpServer = createServer(app);
-const io = new Server(httpServer);
+const io = new Server(httpServer, {
+    cors: {
+        origin: '*',
+    }
+});
 
 // uses cors for api calls
 app.use(cors());

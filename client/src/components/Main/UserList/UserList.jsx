@@ -29,9 +29,9 @@ export default function UserList() {
         }
         getUserList();
 
-        io.on('connection', (data) => {
-            console.log(data);
-        })
+        // io.on('connection', (data) => {
+        //     console.log(data);
+        // })
 
         //setUserList([{name: '4660329073978141'}, {name: '6086240188116419'}])
     },[])
