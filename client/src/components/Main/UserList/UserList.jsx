@@ -11,7 +11,7 @@ export default function UserList() {
 
     //this list will contain all the user who have sent message to the current user's page
     const [userList, setUserList] = useState([]);
-    const [userId, setUserId] = useState('123');
+    const [userId, setUserId] = useState();
 
     // get the list of users when this component is rendered
     useEffect(() => {

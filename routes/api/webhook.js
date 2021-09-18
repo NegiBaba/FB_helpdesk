@@ -104,7 +104,8 @@ function handleMessage(sender_psid, received_message) {
     })
 
     // using socket to inform our front end about new messages
-    io.on('connection', (socket) => {
+    const socket = io('https://helpdesk-testing.herokuapp.com');
+    socket.on('connection', (socket) => {
         socket.emit('check', 'got new message');
     })
 
