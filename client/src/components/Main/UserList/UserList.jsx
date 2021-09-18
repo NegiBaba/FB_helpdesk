@@ -5,9 +5,7 @@ import icon from "./UserIcon.svg"
 import './UserList.css'
 import Message from './Message/Message';
 
-import { io } from 'socket.io-client';
-
-const socket = io('https://helpdesk-testing.herokuapp.com/');
+import { io } from 'socket.io-client'
 
 export default function UserList() {
 
@@ -28,10 +26,11 @@ export default function UserList() {
             });
         }
         getUserList();
-
-        // io.on('connection', (data) => {
-        //     console.log(data);
-        // })
+        
+        const socket = io('https://helpdesk-testing.herokuapp.com')
+        socket.on('check', (data) => {
+            console.log(data);
+        })
 
         //setUserList([{name: '4660329073978141'}, {name: '6086240188116419'}])
     },[])

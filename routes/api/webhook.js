@@ -5,6 +5,16 @@ const
     app = express().use(bodyParser.json()); // creates express http server
 
 const mongoose = require('mongoose');
+const { Server, Socket } = require('socket.io');
+const {createServer } = require('http');
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+    cors: {
+        origin: '*',
+    }
+});
+
+
 const db = require('./mongo');
 const chat = require('../../models/chat');
 
@@ -91,6 +101,11 @@ function handleMessage(sender_psid, received_message) {
         if (err) {
             console.log(err);
         }
+    })
+
+    // using socket to inform our front end about new messages
+    io.on('connection', (socket) => {
+        socket.emit('check', 'got new message');
     })
 
     // console.log('response of database : ');

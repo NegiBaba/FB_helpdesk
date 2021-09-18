@@ -5,17 +5,9 @@ const bodyParser = require('body-parser')
 
 require('dotenv').config();
 require('./routes/api/mongo');
-const {createServer } = require('http');
-const { Server, Socket } = require('socket.io');
 
 // creates express http server
 const app = express();
-const httpServer = createServer(app);
-const io = new Server(httpServer, {
-    cors: {
-        origin: '*',
-    }
-});
 
 // uses cors for api calls
 app.use(cors());
@@ -27,10 +19,6 @@ app.use(user);
 
 app.get('/', (req, res) => {
     res.send('helpdesk main page is here')
-})
-
-io.on('connection', (socket) => {
-    socket.emit('check', 'print this');
 })
 
 const PORT = process.env.PORT || 1337;

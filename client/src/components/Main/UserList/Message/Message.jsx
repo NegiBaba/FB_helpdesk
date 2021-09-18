@@ -3,8 +3,8 @@ import axios from "axios";
 
 export default function Message(userId) {
     useEffect(() => {
-        async function getUserMessages(userId) {
-            await axios.get('https://helpdesk-testing.herokuapp.com/messages?userId=' + userId)
+        async function getUserMessages() {
+            await axios.get('https://helpdesk-testing.herokuapp.com/messages?userId=' + userId.userId)
             .then(response => {
                 console.log(response.data);
                 console.log(userId);
