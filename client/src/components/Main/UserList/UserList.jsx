@@ -30,7 +30,7 @@ export default function UserList() {
         //setUserList([{name: '4660329073978141'}, {name: '6086240188116419'}])
     },[])
 
-    userEffect(() => {
+    useEffect(() => {
         const socket = io('https://helpdesk-testing.herokuapp.com')
         socket.on('check', (data) => {
             console.log(data);

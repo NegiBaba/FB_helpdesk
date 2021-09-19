@@ -129,4 +129,4 @@ function callSendAPI(sender_psid, response) {
     console.log('called the send api function');
 }
 
-module.exports = app;
+module.exports = httpServer;
