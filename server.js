@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 const chat = require("./models/chat");
 
 io.on("connection", (socket) => {
-    console.log('connected tttt')
+    socket.emit('check', 'response');
 });
 
 // Creates the endpoint for our webhook
