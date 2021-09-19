@@ -32,6 +32,9 @@ app.get("/", (req, res) => {
 ///////////// WEBHOOK METHODS STARTS HERE ///////////////
 const chat = require("./models/chat");
 
+io.on("connection", (socket) => {
+    console.log('connected tttt')
+});
 
 // Creates the endpoint for our webhook
 app.post("/webhook", (req, res) => {
