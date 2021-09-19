@@ -31,7 +31,7 @@ export default function UserList() {
     },[])
 
     useEffect(() => {
-        const socket = io('https://helpdesk-testing.herokuapp.com')
+        const socket = io('https://helpdesk-testing.herokuapp.com/webhook')
         socket.on('check', (data) => {
             console.log(data);
         }) 
