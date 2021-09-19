@@ -38,7 +38,7 @@ export default function UserList() {
     },[])
 
 
-    return <div className='UserList'>
+    return <div className='UserList'> 
         <h1 className='UserListHeading'>Conversation</h1>
         {userList.map((user) => <div className='userBox' onClick = {((event) => {setUserId(event.target.innerText)})}><img src={icon} alt='userIcon' className='usericon'/><h3 className='userName'>{ user.name }</h3></div>)}
         <div className='messages'>
