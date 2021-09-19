@@ -20,6 +20,7 @@ const chat = require('../../models/chat');
 
 io.on('connection', (socket) => {
     socket.emit('check', 'got new message');
+    console.log('sending to client')
 })
 
 // Creates the endpoint for our webhook 
@@ -129,4 +130,4 @@ function callSendAPI(sender_psid, response) {
     console.log('called the send api function');
 }
 
-module.exports = httpServer;
+module.exports = app;
