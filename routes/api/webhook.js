@@ -5,23 +5,9 @@ const
     app = express().use(bodyParser.json()); // creates express http server
 
 const mongoose = require('mongoose');
-const { Server, Socket } = require('socket.io');
-const {createServer } = require('http');
-const httpServer = createServer(app);
-const io = new Server(httpServer, {
-    cors: {
-        origin: '*',
-    }
-});
-
 
 const db = require('./mongo');
 const chat = require('../../models/chat');
-
-io.on('connection', (socket) => {
-    socket.emit('check', 'got new message');
-    console.log('sending to client')
-})
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {

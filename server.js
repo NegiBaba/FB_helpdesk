@@ -29,6 +29,11 @@ app.get('/', (req, res) => {
     res.send('helpdesk main page is here')
 })
 
+io.on('connection', (socket) => {
+    socket.emit('check', 'got new message');
+    console.log('sending to client')
+})
+
 const PORT = process.env.PORT || 1337;
 
 httpServer.listen(PORT, () => console.log("server is running on PORT: ", { PORT }));
