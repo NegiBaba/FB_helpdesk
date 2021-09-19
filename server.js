@@ -1,15 +1,17 @@
 const express = require('express');
 const cors = require('cors');
-const request = require('request');
-const bodyParser = require('body-parser')
-const { Server, Socket } = require('socket.io');
-const {createServer } = require('http');
+// creates express http server
+const app = express();
+// uses cors for api calls
+app.use(cors());
+
+const { Server } = require('socket.io');
+const { createServer } = require('http');
 
 require('dotenv').config();
 require('./routes/api/mongo');
 
-// creates express http server
-const app = express();
+
 
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
@@ -17,9 +19,6 @@ const io = new Server(httpServer, {
         origin: '*',
     }
 });
-
-// uses cors for api calls
-app.use(cors());
 
 const webhook = require('./routes/api/webhook');
 const user = require('./routes/api/user');

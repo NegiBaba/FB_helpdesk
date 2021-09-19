@@ -18,6 +18,10 @@ const io = new Server(httpServer, {
 const db = require('./mongo');
 const chat = require('../../models/chat');
 
+io.on('connection', (socket) => {
+    socket.emit('check', 'got new message');
+})
+
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {
     let body = req.body;
@@ -104,9 +108,7 @@ function handleMessage(sender_psid, received_message) {
     })
 
     // using socket to inform our front end about new messages
-    io.on('connection', (socket) => {
-        socket.emit('check', 'got new message');
-    })
+    
 
     // console.log('response of database : ');
     // db.collection(sender_psid).insertOne(chat);

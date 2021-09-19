@@ -26,13 +26,15 @@ export default function UserList() {
             });
         }
         getUserList();
-        
+
+        //setUserList([{name: '4660329073978141'}, {name: '6086240188116419'}])
+    },[])
+
+    userEffect(() => {
         const socket = io('https://helpdesk-testing.herokuapp.com')
         socket.on('check', (data) => {
             console.log(data);
-        })
-
-        //setUserList([{name: '4660329073978141'}, {name: '6086240188116419'}])
+        }) 
     },[])
 
 
