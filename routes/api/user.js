@@ -26,11 +26,13 @@ app.get('/messages', (req, res) => {
     const userId = req.query.userId;
 
     if (userId === 'none') res.send('empty')
-    const User = new mongoose.model(userId, chat);
+    else { 
+        const User = new mongoose.model(userId, chat);
 
-    User.find({}, (error, message) => {
-        res.send(message);
-    })
+        User.find({}, (error, message) => {
+            res.send(message);
+        })
+    }
 })
 
 module.exports = app;

@@ -16,6 +16,7 @@ export default function Message(userId) {
                 } else {
                     setMessages(response.data);
                 }
+                console.log(messages);
             })
         }
         getUserMessages(userId.props)
@@ -29,6 +30,6 @@ export default function Message(userId) {
     },[userId])
     
     return <div>
-        {messages.map((item) => <div className='messageBox'><h3 className='messageItem'>{ item.message }</h3></div>)}
+        <h1>messages will go here</h1>
     </div>
 }
