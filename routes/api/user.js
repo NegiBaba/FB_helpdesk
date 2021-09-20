@@ -4,6 +4,9 @@ const
     bodyParser = require('body-parser'),
     app = express().use(bodyParser.json()); // creates express http server
 
+const cors = require("cors");
+app.use(cors());
+
 const mongoose = require('mongoose');
 const db = require('./mongo');
 const chat = require('../../models/chat');
