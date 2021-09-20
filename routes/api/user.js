@@ -27,7 +27,6 @@ app.get('/messages', (req, res) => {
 
     User.find({}, (error, message) => {
         res.send(message);
-        console.log(message);
     })
 })
 

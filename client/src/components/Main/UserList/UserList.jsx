@@ -30,12 +30,12 @@ export default function UserList() {
         //setUserList([{name: '4660329073978141'}, {name: '6086240188116419'}])
     },[])
 
-    useEffect(() => {
-        const socket = io('https://helpdesk-testing.herokuapp.com')
-        socket.on('check', (data) => {
-            console.log(data);
-        }) 
-    },[])
+    // useEffect(() => {
+    //     const socket = io('https://helpdesk-testing.herokuapp.com')
+    //     socket.on('check', (data) => {
+    //         console.log(data);
+    //     }) 
+    // },[])
 
 
     return <div className='UserList'> 

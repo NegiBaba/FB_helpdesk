@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 const chat = require("./models/chat");
 
 io.on("connection", (socket) => {
-    socket.emit('check', 'response');
+    socket.emit('check', 'socket data from backend');
 });
 
 // Creates the endpoint for our webhook
@@ -97,11 +97,11 @@ app.get("/webhook", (req, res) => {
 function handleMessage(sender_psid, received_message) {
     let response;
 
-    if (received_message.text) {
-        response = {
-            text: "Message recieved will reach to you soon.",
-        };
-    }
+    // if (received_message.text) {
+    //     response = {
+    //         text: "Message recieved will reach to you soon.",
+    //     };
+    // }
 
     console.log("message recieved inserting to the db");
 
@@ -115,10 +115,7 @@ function handleMessage(sender_psid, received_message) {
     });
 
     // using socket to inform our front end about new messages
-    io.sockets.emit('check', {text: received_message.text});
-
-    // console.log('response of database : ');
-    // db.collection(sender_psid).insertOne(chat);
+    io.sockets.emit('check', 'new message recieved');
 
     // Sending the response
     callSendAPI(sender_psid, response);
