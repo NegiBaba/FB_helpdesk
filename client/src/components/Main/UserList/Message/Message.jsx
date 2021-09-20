@@ -7,7 +7,6 @@ export default function Message(userId) {
             await axios.get('https://helpdesk-testing.herokuapp.com/messages?userId=' + userId.userId)
             .then(response => {
                 console.log(response.data);
-                console.log(userId);
             })
         }
         getUserMessages(userId.props)

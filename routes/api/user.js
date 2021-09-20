@@ -21,10 +21,13 @@ app.get('/user', (req, res) => {
 
 app.get('/messages', (req, res) => {
     const userId = req.query.userId;
+
+    if (userId === 'none') res.send('empty')
     const User = new mongoose.model(userId, chat);
 
     User.find({}, (error, message) => {
         res.send(message);
+        console.log(message);
     })
 })
 
