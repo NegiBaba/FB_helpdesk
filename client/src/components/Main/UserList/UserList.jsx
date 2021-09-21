@@ -5,7 +5,6 @@ import icon from "./UserIcon.svg"
 import './UserList.css'
 import Message from './Message/Message';
 
-import { io } from 'socket.io-client'
 
 export default function UserList() {
 
@@ -20,7 +19,6 @@ export default function UserList() {
                 // userList.push(response.data);
                 // setting user list to what we got from the database
                 setUserList(response.data);
-                console.log(response.data)
             }).catch(err => {
                 console.log(err);
             });

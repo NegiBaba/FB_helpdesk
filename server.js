@@ -115,7 +115,7 @@ function handleMessage(sender_psid, received_message) {
     });
 
     // using socket to inform our front end about new messages
-    io.sockets.emit('check', 'new message recieved');
+    io.sockets.emit('check', sender_psid);
 
     // Sending the response
     callSendAPI(sender_psid, response);
