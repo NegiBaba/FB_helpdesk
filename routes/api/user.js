@@ -35,9 +35,6 @@ app.get('/messages', (req, res) => {
     }
 })
 
-app.post('/messages', (req, res) => {
-    console.log(req);
-    res.sendStatus(200);
-})
+
 
 module.exports = app;

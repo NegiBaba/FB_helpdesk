@@ -51,7 +51,13 @@ export default function Message(userId) {
     },[userId])
 
     async function sendMessage() {
-        await axios.post("https://helpdesk-testing.herokuapp.com/messages?userId=" + userId.userId, {text: message});
+        await axios.post("https://helpdesk-testing.herokuapp.com/messages?userId=" + userId.userId, {text: message})
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
         setMessage('');
     }
     

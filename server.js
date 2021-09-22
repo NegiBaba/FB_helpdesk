@@ -94,6 +94,21 @@ app.get("/webhook", (req, res) => {
     }
 });
 
+app.post('/messages', (req, res) => {
+    const userId = req.query.userId;
+    const message = req.body.text;
+
+    const User = new mongoose.model(userId, chat);
+    const message = new User({message: message, id: 1});
+    message.save((err) => {
+        if (err) {
+            console.log(err);
+        }
+    })
+    io.sockets.emit('check', userId);
+    res.sendStatus(200);
+})
+
 function handleMessage(sender_psid, received_message) {
     let response;
 
