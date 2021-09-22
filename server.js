@@ -99,8 +99,8 @@ app.post('/messages', (req, res) => {
     const message = req.body.text;
 
     const User = new mongoose.model(userId, chat);
-    const message = new User({message: message, id: 1});
-    message.save((err) => {
+    const reply = new User({message: message, id: 1});
+    reply.save((err) => {
         if (err) {
             console.log(err);
         }
