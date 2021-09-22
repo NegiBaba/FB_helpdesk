@@ -8,6 +8,11 @@ import './Message.css';
 export default function Message(userId) {
 
     const [chatList, setchatList] = useState([{message: 'click on anny id to get their messages', id: 2}, {message: 'list of users', id: 2}]);
+    const [message, setMessage] = useState('');
+    function handleChange(e) {
+        setMessage(e.target.value);
+      }
+
     useEffect(() => {
         async function getUserMessages() {
             await axios.get('https://helpdesk-testing.herokuapp.com/messages?userId=' + userId.userId)
@@ -44,14 +49,17 @@ export default function Message(userId) {
             }
         }) 
     },[userId])
+
+    async function sendMessage() {
+        await axios.post("https://helpdesk-testing.herokuapp.com/messages?userId=" + userId.userId, {text: message});
+        setMessage('');
+    }
     
     return <div className='chatMessage'>
         {chatList.map((item) => <div className={item.id}> { item.message } </div>)}
         <div className='messageInput'>
-            <form action='https://helpdesk-testing.herokuapp.com/message' method='POST'>
-                <input placeholder='Your message here'></input>
-                <button type='submit'>Send</button>
-            </form>
+                <input placeholder='Your message here'onChange={handleChange} ></input>
+                <button onClick={sendMessage}>Send</button>
         </div>
     </div>
 }
