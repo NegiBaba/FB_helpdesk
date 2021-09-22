@@ -105,7 +105,6 @@ app.post('/messages', (req, res) => {
             console.log(err);
         }
     })
-    io.sockets.emit('check', userId);
     res.sendStatus(200);
 })
 

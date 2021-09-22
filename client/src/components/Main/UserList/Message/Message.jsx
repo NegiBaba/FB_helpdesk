@@ -24,6 +24,9 @@ export default function Message(userId) {
                     setchatList(response.data);
                 }
             })
+            .catch((error) => {
+                console.log(error)
+            })
         }
         getUserMessages(userId.props)
     },[userId])
@@ -51,14 +54,18 @@ export default function Message(userId) {
     },[userId])
 
     async function sendMessage() {
-        await axios.post("https://helpdesk-testing.herokuapp.com/messages?userId=" + userId.userId, {text: message})
-        .then((res) => {
-            console.log(res);
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-        setMessage('');
+        if (userId.userId == 'none') {
+            console.log('do nothing');
+        } else {
+            await axios.post("https://helpdesk-testing.herokuapp.com/messages?userId=" + userId.userId, {text: message})
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            setMessage('');
+        }
     }
     
     return <div className='chatMessage'>
