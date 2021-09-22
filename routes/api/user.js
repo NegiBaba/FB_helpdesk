@@ -4,31 +4,37 @@ const
     bodyParser = require('body-parser'),
     app = express().use(bodyParser.json()); // creates express http server
 
+const cors = require("cors");
+app.use(cors());
+
 const mongoose = require('mongoose');
 const db = require('./mongo');
 const chat = require('../../models/chat');
 
 app.get('/user', (req, res) => {
-    const col = req.query.userId;
-    console.log("user id id : ", col);
-
-    const User = new mongoose.model(col, chat);
-    User.find({}, (err, message_list) => {
-        message_list.forEach((item) => {
-            console.log(item.message);
-        })
-        res.send(message_list);
+    mongoose.connection.db.listCollections().toArray(function(err, names) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(names);
+        }
     });
+});
+
+app.get('/messages', (req, res) => {
+    const userId = req.query.userId;
+
+    if (userId === 'none') res.send('empty')
+    else { 
+        const User = new mongoose.model(userId, chat);
+
+        User.find({}, (error, message) => {
+            res.send(message);
+        })
+    }
 })
 
-app.post('/user', async (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
-    console.log("body is this - ", req.body);
-    res.sendStatus(200);
-})
 
-app.get('/user', (req, res) => {
-    db.collection.find()
-})
 
 module.exports = app;
