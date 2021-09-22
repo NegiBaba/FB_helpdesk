@@ -1,12 +1,24 @@
+.render-box {
+    position: absolute;
+    left: 60px;
+    text-align: left;
+    height: 100vh;
+}
+
 .UserList {
     border-right: 1px solid #c8c6c7;
-    height: 100%;
-    left: 60px;
-    margin: 0;
-    position: fixed;
+    display: inline-block;
+    height: 100vh;
+    vertical-align:top;
     width: 250px;
-    text-align: left;
-    top: 0;
+}
+
+.messages {
+    display: inline-block;
+    border-right: 1px solid #c8c6c7;
+    height: 100vh;
+    vertical-align:top;
+    width: 800px;
 }
 
 .UserListHeading {
@@ -19,7 +31,8 @@
 .userBox {
     border-bottom: 1px solid #f4f0ec;
     padding-left: 20px;
-}
+} 
+
 .userBox:hover {
     background-color: #f4f0ec;
     cursor: pointer;

@@ -3,20 +3,21 @@ import axios from "axios";
 
 import { io } from 'socket.io-client'
 
+import './Message.css';
+
 export default function Message(userId) {
 
-    const [messages, setMessages] = useState([]);
+    const [chatList, setchatList] = useState([{message: 'click on anny id to get their messages', id: 2}, {message: 'list of users', id: 2}]);
     useEffect(() => {
         async function getUserMessages() {
             await axios.get('https://helpdesk-testing.herokuapp.com/messages?userId=' + userId.userId)
             .then(response => {
                 console.log(response.data);
                 if (response.data === 'empty') {
-                    setMessages({message: 'click on anny id to get their messages', id: 2});
+                    setchatList([{message: 'click on anny id to get their messages', id: 2}, {message: 'list of users', id: 2}]);
                 } else {
-                    setMessages(response.data);
+                    setchatList(response.data);
                 }
-                console.log(messages);
             })
         }
         getUserMessages(userId.props)
@@ -25,17 +26,18 @@ export default function Message(userId) {
     useEffect(() => {
         const socket = io('https://helpdesk-testing.herokuapp.com')
         socket.on('check', (data) => {
-            if (data === userId) {
+            console.log(data);
+            if (data === userId.userId) {
                 async function getUserMessages() {
                     await axios.get('https://helpdesk-testing.herokuapp.com/messages?userId=' + userId.userId)
                     .then(response => {
                         console.log(response.data);
                         if (response.data === 'empty') {
-                            setMessages({message: 'click on anny id to get their messages', id: 2});
+                            setchatList([{message: 'click on anny id to get their messages', id: 2}, {message: 'list of users', id: 2}]);
                         } else {
-                            setMessages(response.data);
+                            setchatList(response.data);
                         }
-                        console.log(messages);
+                        console.log(chatList);
                     })
                 }
                 getUserMessages(userId.props)
@@ -43,7 +45,13 @@ export default function Message(userId) {
         }) 
     },[userId])
     
-    return <div>
-        <h1>messages will go here</h1>
+    return <div className='chatMessage'>
+        {chatList.map((item) => <div className={item.id}> { item.message } </div>)}
+        <div className='messageInput'>
+            <form action='https://helpdesk-testing.herokuapp.com/message' method='POST'>
+                <input placeholder='Your message here'></input>
+                <button type='submit'>Send</button>
+            </form>
+        </div>
     </div>
 }

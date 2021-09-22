@@ -35,4 +35,8 @@ app.get('/messages', (req, res) => {
     }
 })
 
+app.post('/messages', (req, res) => {
+    console.log(req);
+})
+
 module.exports = app;
