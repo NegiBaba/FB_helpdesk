@@ -2,7 +2,6 @@
     position: absolute;
     left: 60px;
     text-align: left;
-    overflow-y: scroll;
 }
 
 .UserList {

@@ -1,7 +1,7 @@
 .chatMessage {
     padding: 10px;
     overflow-y: scroll;
-    height: 545px;
+    height: 645px;
 }
 
 [class = '2'] {
